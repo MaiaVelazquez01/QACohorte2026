@@ -19,4 +19,16 @@ describe('Carrito - Sauce Demo', () => {
         cy.get('[data-test="shopping-cart-badge"]').should('have.text','1')
     })
 
+    it('Agregar múltiples productos y verificar contador', () => {
+        cy.get('[data-test="shopping-cart-badge"]').should('not.exist')
+        cy.get('[data-test="remove-sauce-labs-backpack"]').should('not.exist')
+        cy.get('[data-test="remove-sauce-labs-bike-light"]').should('not.exist')
+        cy.get('[data-test="remove-sauce-labs-onesie"]').should('not.exist')
+        cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
+        cy.get('[data-test="add-to-cart-sauce-labs-bike-light"]').click()
+        cy.get('[data-test="add-to-cart-sauce-labs-onesie"]').click()
+        cy.get('[data-test="shopping-cart-badge"]').should('be.visible')
+        cy.get('[data-test="shopping-cart-badge"]').should('have.text','3')
+    })
+
 })
